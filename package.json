@@ -32,7 +32,11 @@
     "yosay": "^2.0.1"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/(__tests__|tests|test)/**/*.js?(x)",
+      "**/?(*.)(spec|test).js?(x)"
+    ]
   },
   "scripts": {
     "prepublish": "nsp check",

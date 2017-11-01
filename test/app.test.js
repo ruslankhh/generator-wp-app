@@ -2,7 +2,7 @@ import path from 'path';
 import assert from 'yeoman-assert';
 import helpers from 'yeoman-test';
 
-describe('generator-wp-site:app', () => {
+describe('generator-wp-app:app', () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, '../generators/app'))

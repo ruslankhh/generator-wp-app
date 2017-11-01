@@ -1,19 +1,19 @@
-# generator-wp-site [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-wp-app [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Yeoman generator for WordPress
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-wp-site using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-wp-app using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-wp-site
+npm install -g generator-wp-app
 ```
 
 Then generate your new project:
 
 ```bash
-yo wp-site
+yo wp-app
 ```
 
 ## Getting To Know Yeoman
@@ -27,9 +27,9 @@ yo wp-site
 
 MIT © [Ruslan Khusnetdinov](http://ruslankhh.com)
 
-[npm-image]: https://badge.fury.io/js/generator-wp-site.svg
-[npm-url]: https://npmjs.org/package/generator-wp-site
-[travis-image]: https://travis-ci.org/ruslankhh/generator-wp-site.svg?branch=master
-[travis-url]: https://travis-ci.org/ruslankhh/generator-wp-site
-[daviddm-image]: https://david-dm.org/ruslankhh/generator-wp-site.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/ruslankhh/generator-wp-site
+[npm-image]: https://badge.fury.io/js/generator-wp-app.svg
+[npm-url]: https://npmjs.org/package/generator-wp-app
+[travis-image]: https://travis-ci.org/ruslankhh/generator-wp-app.svg?branch=master
+[travis-url]: https://travis-ci.org/ruslankhh/generator-wp-app
+[daviddm-image]: https://david-dm.org/ruslankhh/generator-wp-app.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/ruslankhh/generator-wp-app

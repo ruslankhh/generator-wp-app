@@ -13,7 +13,7 @@ export default class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay('Welcome to the tiptop ' + chalk.red('generator-wp-site') + ' generator!')
+      yosay('Welcome to the tiptop ' + chalk.red('generator-wp-app') + ' generator!')
     );
 
     const prompts = [

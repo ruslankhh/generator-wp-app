@@ -51,9 +51,7 @@ exports.default = class extends _yeomanGenerator2.default {
     // Have Yeoman greet the user.
     this.log(
       (0, _yosay2.default)(
-        'Welcome to the tiptop ' +
-          _chalk2.default.red('generator-wp-site') +
-          ' generator!'
+        'Welcome to the tiptop ' + _chalk2.default.red('generator-wp-app') + ' generator!'
       )
     );
 

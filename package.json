@@ -6,32 +6,41 @@
   "author": {
     "name": "Ruslan Khusnetdinov",
     "email": "ruslankhh@gmail.com",
-    "url": "ruslankhh.com"
+    "url": "http://ruslankhh.com"
   },
-  "files": ["generators"],
-  "main": "generators/index.js",
+  "main": "generators/app/index.js",
+  "files": ["generators", "templates"],
   "keywords": ["yeoman", "generator", "wordpress", "wp", "yeoman-generator"],
   "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
     "coveralls": "^2.13.1",
-    "nsp": "^2.6.3",
-    "eslint": "^4.1.0",
-    "prettier": "^1.7.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^4.2.1",
+    "del-cli": "^1.1.0",
+    "eslint": "^4.10.0",
     "eslint-config-prettier": "^2.4.0",
-    "eslint-plugin-prettier": "^2.2.0",
     "eslint-config-xo": "^0.18.2",
+    "eslint-plugin-prettier": "^2.2.0",
+    "husky": "^0.14.3",
     "jest": "^21.0.0",
-    "jest-cli": "^21.0.0"
+    "jest-cli": "^21.0.0",
+    "lint-staged": "^4.2.1",
+    "nsp": "^2.8.1",
+    "prettier": "^1.7.0",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
+    "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.1.0",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
   "jest": {
+    "coverageDirectory": "<rootDir>/coverage",
+    "roots": ["<rootDir>/test"],
     "testEnvironment": "node",
     "testMatch": [
       "**/(__tests__|tests|test)/**/*.js?(x)",
@@ -39,31 +48,18 @@
     ]
   },
   "scripts": {
-    "prepublish": "nsp check",
-    "pretest": "eslint .",
+    "clean": "del generators",
+    "prebuild": "npm run clean",
+    "build": "babel src -d .",
+    "lint": "eslint src",
+    "pretest": "npm run lint && npm run build",
+    "test": "jest",
     "precommit": "lint-staged",
-    "test": "jest"
+    "prepare": "nsp check"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"],
     "*.json": ["prettier --write", "git add"]
-  },
-  "eslintConfig": {
-    "extends": ["xo", "prettier"],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "printWidth": 90
-        }
-      ]
-    },
-    "plugins": ["prettier"]
   },
   "repository": "git@github.com:ruslankhh/generator-wp-site.git",
   "license": "MIT"

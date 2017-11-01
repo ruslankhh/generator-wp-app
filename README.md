@@ -25,7 +25,7 @@ yo wp-site
 
 ## License
 
-MIT © [Ruslan Khusnetdinov](ruslankhh.com)
+MIT © [Ruslan Khusnetdinov](http://ruslankhh.com)
 
 [npm-image]: https://badge.fury.io/js/generator-wp-site.svg
 [npm-url]: https://npmjs.org/package/generator-wp-site

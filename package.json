@@ -8,8 +8,8 @@
     "email": "ruslankhh@gmail.com",
     "url": "http://ruslankhh.com"
   },
-  "main": "build/generators/app/index.js",
-  "files": ["build/generators", "build/templates"],
+  "main": "generators/app/index.js",
+  "files": ["generators"],
   "keywords": ["yeoman", "generator", "wordpress", "wp", "yeoman-generator"],
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -17,6 +17,7 @@
     "babel-jest": "^21.2.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
     "coveralls": "^2.13.1",
     "del-cli": "^1.1.0",
     "eslint": "^4.10.0",
@@ -33,7 +34,6 @@
     "yeoman-test": "^1.7.0"
   },
   "dependencies": {
-    "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.1.0",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
@@ -48,10 +48,10 @@
     ]
   },
   "scripts": {
-    "clean": "del build",
-    "copy": "mkdir build && cp -R src/* build",
+    "clean": "del generators",
+    "copy": "cp -R src/* .",
     "prebuild": "npm run clean && npm run copy",
-    "build": "babel src -d build",
+    "build": "babel src -d .",
     "postbuild": "",
     "lint": "eslint src",
     "pretest": "npm run lint && npm run build",

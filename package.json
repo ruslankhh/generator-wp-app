@@ -8,8 +8,8 @@
     "email": "ruslankhh@gmail.com",
     "url": "http://ruslankhh.com"
   },
-  "main": "build/generators/app/index.js",
-  "files": ["build"],
+  "main": "generators/app/index.js",
+  "files": ["generators"],
   "keywords": ["yeoman", "generator", "wordpress", "wp", "yeoman-generator"],
   "devDependencies": {
     "babel-cli": "^6.26.0",

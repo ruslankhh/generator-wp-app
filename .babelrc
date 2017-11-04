@@ -5,5 +5,8 @@
   ],
   "plugins": [
     "add-module-exports"
+  ],
+  "ignore": [
+    "**/templates"
   ]
 }

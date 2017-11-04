@@ -8,8 +8,8 @@
     "email": "ruslankhh@gmail.com",
     "url": "http://ruslankhh.com"
   },
-  "main": "generators/app/index.js",
-  "files": ["generators", "templates"],
+  "main": "build/generators/app/index.js",
+  "files": ["build/generators", "build/templates"],
   "keywords": ["yeoman", "generator", "wordpress", "wp", "yeoman-generator"],
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -48,9 +48,9 @@
     ]
   },
   "scripts": {
-    "clean": "del generators",
-    "prebuild": "npm run clean",
-    "build": "babel src -d .",
+    "prebuild": "del build",
+    "build": "babel src -d build",
+    "postbuild": "cp -R src/templates build/templates",
     "lint": "eslint src",
     "pretest": "npm run lint && npm run build",
     "test": "jest",

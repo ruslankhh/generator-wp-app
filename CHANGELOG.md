@@ -2,12 +2,12 @@
 
 #### 📝 Documentation
 
-- Add CHANGELOG.md.
+- Add CHANGELOG.md. ([@ruslankhh](https://github.com/ruslankhh))
 
 #### 🏠 Internal
 
-- Add npm scope `@ruslankhh`.
-- Move back `templates` to `src/generators/app/templates`.
+- Add npm scope `@ruslankhh`. ([@ruslankhh](https://github.com/ruslankhh))
+- Move back `templates` to `src/generators/app/templates`. ([@ruslankhh](https://github.com/ruslankhh))
 
 #### Committers: 1
 
@@ -17,7 +17,7 @@
 
 #### 🏠 Internal
 
-- Remove `build` folder.
+- Remove `build` folder. ([@ruslankhh](https://github.com/ruslankhh))
 
 #### Committers: 1
 
@@ -27,12 +27,12 @@
 
 #### 💅 Enhancement
 
-- Add `babel` for support `import`.
+- Add `babel` for support `import`. ([@ruslankhh](https://github.com/ruslankhh))
 
 #### 🏠 Internal
 
-- Rename `generator-wp-site` to `generator-wp-app`.
-- Move `generators/app/templates` to `templates`.
+- Rename `generator-wp-site` to `generator-wp-app`. ([@ruslankhh](https://github.com/ruslankhh))
+- Move `generators/app/templates` to `templates`. ([@ruslankhh](https://github.com/ruslankhh))
 
 #### Committers: 1
 

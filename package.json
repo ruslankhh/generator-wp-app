@@ -1,6 +1,6 @@
 {
   "name": "generator-wp-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Yeoman generator for WordPress",
   "homepage": "https://github.com/ruslankhh/generator-wp-app",
   "author": {
@@ -48,9 +48,11 @@
     ]
   },
   "scripts": {
-    "prebuild": "del build",
+    "clean": "del build",
+    "copy": "mkdir build && cp -R src/* build",
+    "prebuild": "npm run clean && npm run copy",
     "build": "babel src -d build",
-    "postbuild": "cp -R src/templates build/templates",
+    "postbuild": "",
     "lint": "eslint src",
     "pretest": "npm run lint && npm run build",
     "test": "jest",

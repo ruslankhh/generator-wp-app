@@ -1,15 +1,8 @@
-import path from 'path';
 import Generator from 'yeoman-generator';
 import chalk from 'chalk';
 import yosay from 'yosay';
 
 export default class extends Generator {
-  initializing() {
-    this.props = {
-      templatePath: path.join(__dirname, '../../templates')
-    };
-  }
-
   prompting() {
     // Have Yeoman greet the user.
     this.log(
@@ -29,10 +22,6 @@ export default class extends Generator {
       // To access props later use this.props.someAnswer;
       this.props = { ...this.props, ...props };
     });
-  }
-
-  paths() {
-    this.sourceRoot(path.join(this.props.templatePath, 'app'));
   }
 
   writing() {

@@ -1,3 +1,17 @@
+## 0.0.4 (November 5, 2017)
+
+#### 🐛 Bug Fix
+
+- Fix problem with `npm link` and using generator. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### 🏠 Internal
+
+- Move back `build/generators` to `generators`. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### Committers: 1
+
+- Ruslan Khusnetdinov ([ruslankhh](https://github.com/ruslankhh))
+
 ## 0.0.3 (November 4, 2017)
 
 #### 📝 Documentation

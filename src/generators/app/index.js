@@ -6,7 +6,7 @@ export default class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay('Welcome to the tiptop ' + chalk.red('generator-wp-app') + ' generator!')
+      yosay('Welcome to the tiptop ' + chalk.red('WordPress App') + ' generator!')
     );
 
     const prompts = [
@@ -29,9 +29,5 @@ export default class extends Generator {
       this.templatePath('dummyfile.txt'),
       this.destinationPath('dummyfile.txt')
     );
-  }
-
-  install() {
-    this.installDependencies();
   }
 }

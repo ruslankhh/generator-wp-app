@@ -9,7 +9,7 @@
     "url": "http://ruslankhh.com"
   },
   "main": "build/generators/app/index.js",
-  "files": ["build/generators"],
+  "files": ["build"],
   "keywords": ["yeoman", "generator", "wordpress", "wp", "yeoman-generator"],
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -48,10 +48,10 @@
     ]
   },
   "scripts": {
-    "clean": "del build",
-    "copy": "mkdir build && cp -R src/* build",
+    "clean": "del generators",
+    "copy": "cp -R src/* .",
     "prebuild": "npm run clean && npm run copy",
-    "build": "babel src -d build",
+    "build": "babel src -d .",
     "postbuild": "",
     "lint": "eslint src",
     "pretest": "npm run lint && npm run build",

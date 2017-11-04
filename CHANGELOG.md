@@ -6,7 +6,6 @@
 
 #### 🏠 Internal
 
-- Add npm scope `@ruslankhh`. ([@ruslankhh](https://github.com/ruslankhh))
 - Move back `templates` to `src/generators/app/templates`. ([@ruslankhh](https://github.com/ruslankhh))
 
 #### Committers: 1

@@ -11,11 +11,12 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var promptDBName = exports.promptDBName = function promptDBName() {
+var promptDBName = exports.promptDBName = function promptDBName(value) {
   return {
     type: 'input',
-    name: 'dbName',
+    name: 'name',
     message: 'Database Name:',
+    default: value,
     filter: function filter(str) {
       return str.replace(' ', '-');
     },
@@ -23,11 +24,12 @@ var promptDBName = exports.promptDBName = function promptDBName() {
   };
 };
 
-var promptDBUser = exports.promptDBUser = function promptDBUser() {
+var promptDBUser = exports.promptDBUser = function promptDBUser(value) {
   return {
     type: 'input',
-    name: 'dbUser',
-    message: 'Database User Name:',
+    name: 'user',
+    message: 'Database User:',
+    default: value,
     filter: function filter(str) {
       return str.replace(' ', '-');
     },
@@ -35,11 +37,12 @@ var promptDBUser = exports.promptDBUser = function promptDBUser() {
   };
 };
 
-var promptDBPassword = exports.promptDBPassword = function promptDBPassword() {
+var promptDBPassword = exports.promptDBPassword = function promptDBPassword(value) {
   return {
     type: 'password',
-    name: 'dbPassword',
+    name: 'password',
     message: 'Database Password:',
+    default: value,
     validate: _lodash2.default.negate(_lodash2.default.isEmpty)
   };
 };

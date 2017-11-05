@@ -2,16 +2,29 @@ import Generator from 'yeoman-generator';
 import chalk from 'chalk';
 import yosay from 'yosay';
 
-import { promptWPVersion, promptWPTitle } from './prompts/promptsWP';
 import {
-  promptUserName,
-  promptUserPassword,
-  promptUserEmail
-} from './prompts/promptsUser';
-import { promptDBName, promptDBUser, promptDBPassword } from './prompts/promptsDB';
+  promptAppName,
+  promptAppAuthorName,
+  promptAppAuthorEmail
+} from './prompts/promptsApp';
+import {
+  promptWPVersion,
+  promptWPTitle,
+  promptWPAdminUser,
+  promptWPAdminPassword,
+  promptWPAdminEmail
+} from './prompts/promptsWP';
+import {
+  promptDBName,
+  promptDBUser,
+  promptDBPassword
+} from './prompts/promptsDB';
+
+import _default from './default.json';
 
 export default class extends Generator {
   initializing() {
+    this.default = _default;
     this.props = {};
   }
 
@@ -22,37 +35,70 @@ export default class extends Generator {
     );
 
     return Promise.resolve()
-      .then(() => this.prompt([promptWPVersion(), promptWPTitle()]))
-      .then(props => {
-        this.props.wp = {
-          version: props.wpVersion,
-          title: props.wpTitle
-        };
+      .then(() => {
+        return this.prompt([
+          promptAppName(this.default.app.name),
+          promptAppAuthorName(this.default.app.authorName),
+          promptAppAuthorEmail(this.default.app.authorEmail)
+        ])
       })
-      .then(() =>
-        this.prompt([promptUserName(), promptUserPassword(), promptUserEmail()])
-      )
       .then(props => {
-        this.props.user = {
-          name: props.userName,
-          password: props.userPassword,
-          email: props.userEmail
-        };
+        this.props.app = { ...props };
       })
-      .then(() => this.prompt([promptDBName(), promptDBUser(), promptDBPassword()]))
+      .then(() => {
+        this.log('');
+
+        return this.prompt([
+          promptWPVersion(this.default.wp.version),
+          promptWPTitle(this.default.wp.title),
+          promptWPAdminUser(this.default.wp.adminUser),
+          promptWPAdminPassword(),
+          promptWPAdminEmail(this.default.wp.adminEmail)
+        ])
+      })
       .then(props => {
-        this.props.db = {
-          name: props.dbName,
-          user: props.dbUser,
-          password: props.dbPassword
-        };
+        this.props.wp = { ...props };
+      })
+      .then(() => {
+        this.log('');
+
+        return this.prompt([
+          promptDBName(this.default.db.name),
+          promptDBUser(this.default.db.user),
+          promptDBPassword()
+        ])
+      })
+      .then(props => {
+        this.props.db = { ...props };
       });
   }
 
   writing() {
+    this.log('');
     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+      this.templatePath('composer.json'),
+      this.destinationPath('composer.json')
     );
+  }
+
+  install() {
+    this.log('');
+    this.log(chalk.bgBlue(chalk.black(' Installing WP-CLI ')));
+    this.spawnCommandSync('composer', ['install', '--no-suggest']);
+
+    this.log('');
+    this.log(chalk.bgBlue(chalk.black(' Downloading WordPress ')));
+		this.spawnCommandSync('./vendor/bin/wp', [
+			'core',
+			'download',
+			`--version=${this.props.wp.version}`,
+			'--path=app',
+		]);
+  }
+
+  end() {
+    this.log('');
+    this.log(chalk.green('Congratulations! All done.'));
+    this.log('Thanks for using Yeoman.');
   }
 }

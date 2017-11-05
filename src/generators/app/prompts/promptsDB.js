@@ -1,24 +1,27 @@
 import _ from 'lodash';
 
-export const promptDBName = () => ({
+export const promptDBName = value => ({
   type: 'input',
-  name: 'dbName',
+  name: 'name',
   message: 'Database Name:',
+  default: value,
   filter: str => str.replace(' ', '-'),
   validate: _.negate(_.isEmpty)
 });
 
-export const promptDBUser = () => ({
+export const promptDBUser = value => ({
   type: 'input',
-  name: 'dbUser',
-  message: 'Database User Name:',
+  name: 'user',
+  message: 'Database User:',
+  default: value,
   filter: str => str.replace(' ', '-'),
   validate: _.negate(_.isEmpty)
 });
 
-export const promptDBPassword = () => ({
+export const promptDBPassword = value => ({
   type: 'password',
-  name: 'dbPassword',
+  name: 'password',
   message: 'Database Password:',
+  default: value,
   validate: _.negate(_.isEmpty)
 });

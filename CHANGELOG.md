@@ -1,3 +1,23 @@
+## 0.1.0-dev (November 5, 2017)
+
+#### 🚀 New Feature
+
+- `app`
+  - Add prompts. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### 🏠 Internal
+
+- `app`
+  - Update test cases for prompts. ([@ruslankhh](https://github.com/ruslankhh))
+
+- Other
+  - Add `generators` folder to `.eslintignore`. ([@ruslankhh](https://github.com/ruslankhh))
+  - Add all folder without ignored to `eslint`. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### Committers: 1
+
+- Ruslan Khusnetdinov ([ruslankhh](https://github.com/ruslankhh))
+
 ## 0.0.4 (November 5, 2017)
 
 #### 🐛 Bug Fix

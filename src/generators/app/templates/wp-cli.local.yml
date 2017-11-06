@@ -1,0 +1,5 @@
+path: app
+url: http://localhost:8000
+user: <%= wp.adminUser %>
+color: true
+debug: false

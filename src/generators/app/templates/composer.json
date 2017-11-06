@@ -1,4 +1,16 @@
 {
+  "name": "<%= app.name %>",
+  "description": "",
+  "version": "0.0.0",
+  "type": "wordpress-app",
+  "keywords": ["wordpress"],
+  "authors": [
+    {
+      "name": "<%= app.authorName %>",
+      "email": "<%= app.authorEmail %>",
+      "role": "Developer"
+    }
+  ],
   "require": {
     "wp-cli/wp-cli": "^1.4.0"
   }

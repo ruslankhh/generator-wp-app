@@ -34,8 +34,8 @@ export const promptWPAdminPassword = value => ({
   type: 'password',
   name: 'adminPassword',
   message: 'WordPress Admin Password:',
-  default: value,
-  validate: _.negate(_.isEmpty)
+  filter: String,
+  default: value
 });
 
 export const promptWPAdminEmail = value => ({

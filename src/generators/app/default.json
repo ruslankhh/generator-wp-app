@@ -1,0 +1,19 @@
+{
+  "app": {
+    "name": "wordpress-app",
+    "authorName": "Vasya Pupkin",
+    "authorEmail": "vasya@example.com"
+  },
+  "wp": {
+    "version": "latest",
+    "title": "My Site",
+    "adminUser": "admin",
+    "adminPassword": "password",
+    "adminEmail": "admin@example.com"
+  },
+  "db": {
+    "name": "mysite",
+    "user": "root",
+    "password": "password"
+  }
+}

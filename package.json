@@ -1,6 +1,6 @@
 {
   "name": "generator-wp-app",
-  "version": "0.0.3",
+  "version": "0.1.0-unstable",
   "description": "Yeoman generator for WordPress",
   "homepage": "https://github.com/ruslankhh/generator-wp-app",
   "author": {
@@ -30,11 +30,16 @@
     "lint-staged": "^4.2.1",
     "nsp": "^2.8.1",
     "prettier": "^1.7.0",
+    "watch": "^1.0.2",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "chalk": "^2.1.0",
+    "is-semver": "^1.0.7",
+    "lodash": "^4.17.4",
+    "lodash-checkit": "^2.1.0",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
@@ -50,10 +55,12 @@
   "scripts": {
     "clean": "del generators",
     "copy": "cp -R src/* .",
+    "compile": "babel src -d .",
     "prebuild": "npm run clean && npm run copy",
-    "build": "babel src -d .",
+    "build": "npm run compile",
     "postbuild": "",
-    "lint": "eslint src",
+    "watch": "watch 'npm run copy && npm run compile' src",
+    "lint": "eslint .",
     "pretest": "npm run lint && npm run build",
     "test": "jest",
     "precommit": "lint-staged",

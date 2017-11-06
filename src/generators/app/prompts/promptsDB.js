@@ -22,6 +22,6 @@ export const promptDBPassword = value => ({
   type: 'password',
   name: 'password',
   message: 'Database Password:',
-  default: value,
-  validate: _.negate(_.isEmpty)
+  filter: String,
+  default: value
 });

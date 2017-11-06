@@ -8,12 +8,12 @@
     "version": "latest",
     "title": "My Site",
     "adminUser": "admin",
-    "adminPassword": "password",
+    "adminPassword": "",
     "adminEmail": "admin@example.com"
   },
   "db": {
-    "name": "mysite",
+    "name": "wordpress-app",
     "user": "root",
-    "password": "password"
+    "password": ""
   }
 }

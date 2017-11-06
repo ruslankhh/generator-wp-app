@@ -1,3 +1,25 @@
+## 0.2.0 (November 6, 2017)
+
+#### 🚀 New Feature
+
+- `app`
+  - Add creation MySQL database with WP-CLI. ([@ruslankhh](https://github.com/ruslankhh))
+  - Add installation WordPress with WP-CLI. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### 🏠 Internal
+
+- `app`
+  - Add `wp-cli.local.yml` for WP-CLI. ([@ruslankhh](https://github.com/ruslankhh))
+  - Update test cases for installation WP-CLI. ([@ruslankhh](https://github.com/ruslankhh))
+  - Update test cases for installation WordPress. ([@ruslankhh](https://github.com/ruslankhh))
+
+- Other
+  - Add `services: mysql` to `.travis.yml`. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### Committers: 1
+
+- Ruslan Khusnetdinov ([ruslankhh](https://github.com/ruslankhh))
+
 ## 0.1.0-unstable (November 6, 2017)
 
 #### 🚀 New Feature

@@ -52,7 +52,7 @@ export default class extends Generator {
           promptWPVersion(this.default.wp.version),
           promptWPTitle(this.default.wp.title),
           promptWPAdminUser(this.default.wp.adminUser),
-          promptWPAdminPassword(),
+          promptWPAdminPassword(this.default.wp.adminPassword),
           promptWPAdminEmail(this.default.wp.adminEmail)
         ])
       })
@@ -65,7 +65,7 @@ export default class extends Generator {
         return this.prompt([
           promptDBName(this.default.db.name),
           promptDBUser(this.default.db.user),
-          promptDBPassword()
+          promptDBPassword(this.default.db.password)
         ])
       })
       .then(props => {
@@ -75,9 +75,15 @@ export default class extends Generator {
 
   writing() {
     this.log('');
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('composer.json'),
-      this.destinationPath('composer.json')
+      this.destinationPath('composer.json'),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath('wp-cli.local.yml'),
+      this.destinationPath('wp-cli.local.yml'),
+      this.props
     );
   }
 
@@ -87,13 +93,28 @@ export default class extends Generator {
     this.spawnCommandSync('composer', ['install', '--no-suggest']);
 
     this.log('');
-    this.log(chalk.bgBlue(chalk.black(' Downloading WordPress ')));
+    this.log(chalk.bgBlue(chalk.black(' Installing WordPress ')));
 		this.spawnCommandSync('./vendor/bin/wp', [
 			'core',
 			'download',
-			`--version=${this.props.wp.version}`,
-			'--path=app',
+			`--version=${this.props.wp.version}`
 		]);
+    this.spawnCommandSync('./vendor/bin/wp', [
+      'config',
+      'create',
+      `--dbname=${this.props.db.name}`,
+      `--dbuser=${this.props.db.user}`,
+      `--dbpass=${this.props.db.password}`
+    ]);
+    this.spawnCommandSync('./vendor/bin/wp', ['db', 'create']);
+    this.spawnCommandSync('./vendor/bin/wp', [
+      'core',
+      'install',
+      `--title=${this.props.wp.title}`,
+      `--admin_user=${this.props.wp.adminUser}`,
+      `--admin_password=${this.props.wp.adminPassword}`,
+      `--admin_email=${this.props.wp.adminEmail}`
+    ]);
   }
 
   end() {

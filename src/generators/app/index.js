@@ -8,6 +8,7 @@ import {
   promptAppAuthorEmail
 } from './prompts/promptsApp';
 import {
+  promptWPType,
   promptWPVersion,
   promptWPTitle,
   promptWPAdminUser,
@@ -49,6 +50,7 @@ export default class extends Generator {
         this.log('');
 
         return this.prompt([
+          promptWPType(this.default.wp.type),
           promptWPVersion(this.default.wp.version),
           promptWPTitle(this.default.wp.title),
           promptWPAdminUser(this.default.wp.adminUser),
@@ -109,7 +111,7 @@ export default class extends Generator {
     this.spawnCommandSync('./vendor/bin/wp', ['db', 'create']);
     this.spawnCommandSync('./vendor/bin/wp', [
       'core',
-      'install',
+      this.props.wp.type === 'multisite' ? 'multisite-install' : 'install',
       `--title=${this.props.wp.title}`,
       `--admin_user=${this.props.wp.adminUser}`,
       `--admin_password=${this.props.wp.adminPassword}`,

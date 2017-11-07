@@ -1,3 +1,14 @@
+## 0.3.0 (November 6, 2017)
+
+#### 🚀 New Feature
+
+- `app`
+  - Add WordPress type choice: single-site or multisite. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### Committers: 1
+
+- Ruslan Khusnetdinov ([ruslankhh](https://github.com/ruslankhh))
+
 ## 0.2.0 (November 6, 2017)
 
 #### 🚀 New Feature

@@ -5,6 +5,7 @@
     "authorEmail": "vasya@example.com"
   },
   "wp": {
+    "type": "single-site",
     "version": "latest",
     "title": "My Site",
     "adminUser": "admin",

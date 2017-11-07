@@ -4,6 +4,15 @@ import isSemver from 'is-semver';
 
 const _ = { ...lodashCheckit, ...lodash, isSemver };
 
+export const promptWPType = value => ({
+  type: 'list',
+  name: 'type',
+  message: 'WordPress Type:',
+  choices: ['single-site', 'multisite'],
+  default: value,
+  validate: _.negate(_.isEmpty)
+});
+
 export const promptWPVersion = value => ({
   type: 'input',
   name: 'version',

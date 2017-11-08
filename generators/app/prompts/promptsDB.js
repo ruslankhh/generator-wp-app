@@ -15,7 +15,7 @@ var promptDBName = exports.promptDBName = function promptDBName(value) {
   return {
     type: 'input',
     name: 'name',
-    message: 'Database Name:',
+    message: 'Database name:',
     default: value,
     filter: function filter(str) {
       return str.replace(' ', '-');
@@ -28,7 +28,7 @@ var promptDBUser = exports.promptDBUser = function promptDBUser(value) {
   return {
     type: 'input',
     name: 'user',
-    message: 'Database User:',
+    message: 'Database user:',
     default: value,
     filter: function filter(str) {
       return str.replace(' ', '-');
@@ -41,7 +41,7 @@ var promptDBPassword = exports.promptDBPassword = function promptDBPassword(valu
   return {
     type: 'password',
     name: 'password',
-    message: 'Database Password:',
+    message: 'Database password:',
     filter: String,
     default: value
   };

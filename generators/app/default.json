@@ -9,7 +9,7 @@
     "version": "latest",
     "title": "My Site",
     "adminUser": "admin",
-    "adminPassword": "",
+    "adminPassword": "password",
     "adminEmail": "admin@example.com"
   },
   "db": {

@@ -6,6 +6,14 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _fsExtra = require('fs-extra');
+
+var _fsExtra2 = _interopRequireDefault(_fsExtra);
+
 var _yeomanGenerator = require('yeoman-generator');
 
 var _yeomanGenerator2 = _interopRequireDefault(_yeomanGenerator);
@@ -63,8 +71,10 @@ exports.default = class extends _yeomanGenerator2.default {
 
   writing() {
     this.log('');
-    this.fs.copyTpl(this.templatePath('composer.json'), this.destinationPath('composer.json'), this.props);
-    this.fs.copyTpl(this.templatePath('wp-cli.local.yml'), this.destinationPath('wp-cli.local.yml'), this.props);
+    _fsExtra2.default.copySync(this.templatePath('app'), this.destinationPath('app'), { filter: function filter(src) {
+        return !src.includes('.gitkeep');
+      } });
+    this.fs.copyTpl(this.templatePath('**/*'), this.destinationPath(), this.props);
   }
 
   install() {
@@ -75,9 +85,21 @@ exports.default = class extends _yeomanGenerator2.default {
     this.log('');
     this.log(_chalk2.default.bgBlue(_chalk2.default.black(' Installing WordPress ')));
     this.spawnCommandSync('./vendor/bin/wp', ['core', 'download', '--version=' + this.props.wp.version]);
-    this.spawnCommandSync('./vendor/bin/wp', ['config', 'create', '--dbname=' + this.props.db.name, '--dbuser=' + this.props.db.user, '--dbpass=' + this.props.db.password]);
+    this.spawnCommandSync('./vendor/bin/wp', ['config', 'create', '--dbname=' + this.props.db.name, '--dbuser=' + this.props.db.user, '--dbpass=' + this.props.db.password, '--skip-check']);
     this.spawnCommandSync('./vendor/bin/wp', ['db', 'create']);
     this.spawnCommandSync('./vendor/bin/wp', ['core', this.props.wp.type === 'multisite' ? 'multisite-install' : 'install', '--title=' + this.props.wp.title, '--admin_user=' + this.props.wp.adminUser, '--admin_password=' + this.props.wp.adminPassword, '--admin_email=' + this.props.wp.adminEmail]);
+
+    _fsExtra2.default.moveSync(this.destinationPath('app/core/license.txt'), this.destinationPath('app/LICENSE.txt'));
+    _fsExtra2.default.moveSync(this.destinationPath('app/core/index.php'), this.destinationPath('app/index.php'));
+    _fsExtra2.default.moveSync(this.destinationPath('app/core/wp-config.php'), this.destinationPath('app/wp-config.php'));
+    _fsExtra2.default.moveSync(this.destinationPath('app/core/wp-content/plugins'), this.destinationPath('app/plugins'));
+    _fsExtra2.default.moveSync(this.destinationPath('app/core/wp-content/themes'), this.destinationPath('app/themes'));
+
+    _fsExtra2.default.removeSync(this.destinationPath('app/core/readme.html'));
+    _fsExtra2.default.removeSync(this.destinationPath('app/core/wp-config-sample.php'));
+    _fsExtra2.default.removeSync(this.destinationPath('app/core/wp-content'));
+
+    _fs2.default.writeFileSync(this.destinationPath('app/index.php'), _fs2.default.readFileSync(this.destinationPath('app/index.php')).toString().replace('/wp-blog-header.php', '/core/wp-blog-header.php'));
   }
 
   end() {

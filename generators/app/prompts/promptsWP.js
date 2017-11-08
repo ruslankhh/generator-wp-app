@@ -27,7 +27,7 @@ var promptWPType = exports.promptWPType = function promptWPType(value) {
   return {
     type: 'list',
     name: 'type',
-    message: 'WordPress Type:',
+    message: 'WordPress type:',
     choices: ['single-site', 'multisite'],
     default: value,
     validate: _.negate(_.isEmpty)
@@ -38,7 +38,7 @@ var promptWPVersion = exports.promptWPVersion = function promptWPVersion(value) 
   return {
     type: 'input',
     name: 'version',
-    message: 'WordPress Version:',
+    message: 'WordPress version:',
     default: value,
     validate: function validate(value) {
       return value === 'latest' || value === 'nightly' || _.isSemver(value);
@@ -50,7 +50,7 @@ var promptWPTitle = exports.promptWPTitle = function promptWPTitle(value) {
   return {
     type: 'input',
     name: 'title',
-    message: 'WordPress Title:',
+    message: 'WordPress title:',
     default: value,
     validate: _.negate(_.isEmpty)
   };
@@ -60,7 +60,7 @@ var promptWPAdminUser = exports.promptWPAdminUser = function promptWPAdminUser(v
   return {
     type: 'input',
     name: 'adminUser',
-    message: 'WordPress Admin User:',
+    message: 'WordPress admin user:',
     default: value,
     filter: function filter(str) {
       return str.replace(' ', '-');
@@ -73,7 +73,7 @@ var promptWPAdminPassword = exports.promptWPAdminPassword = function promptWPAdm
   return {
     type: 'password',
     name: 'adminPassword',
-    message: 'WordPress Admin Password:',
+    message: 'WordPress admin password:',
     filter: String,
     default: value
   };
@@ -83,7 +83,7 @@ var promptWPAdminEmail = exports.promptWPAdminEmail = function promptWPAdminEmai
   return {
     type: 'input',
     name: 'adminEmail',
-    message: 'WordPress Admin Email:',
+    message: 'WordPress admin email:',
     default: value,
     validate: _.isEmail
   };

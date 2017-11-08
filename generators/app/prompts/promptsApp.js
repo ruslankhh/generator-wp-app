@@ -23,7 +23,7 @@ var promptAppName = exports.promptAppName = function promptAppName(value) {
   return {
     type: 'input',
     name: 'name',
-    message: 'App Name:',
+    message: 'App name:',
     default: value,
     filter: function filter(str) {
       return str.replace(' ', '-').toLowerCase();
@@ -36,7 +36,7 @@ var promptAppAuthorName = exports.promptAppAuthorName = function promptAppAuthor
   return {
     type: 'input',
     name: 'authorName',
-    message: 'App Author Name:',
+    message: 'App author name:',
     default: value,
     validate: _.negate(_.isEmpty)
   };
@@ -46,7 +46,7 @@ var promptAppAuthorEmail = exports.promptAppAuthorEmail = function promptAppAuth
   return {
     type: 'input',
     name: 'authorEmail',
-    message: 'App Author Email:',
+    message: 'App author email:',
     default: value,
     validate: _.isEmail
   };

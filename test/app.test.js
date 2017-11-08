@@ -18,6 +18,6 @@ describe('generator-wp-app:app', () => {
   });
 
   test('installs wordpress', () => {
-    assert.file(['app']);
+    assert.file(['app/core']);
   });
 });

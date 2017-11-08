@@ -4,10 +4,19 @@ import isSemver from 'is-semver';
 
 const _ = { ...lodashCheckit, ...lodash, isSemver };
 
+export const promptWPType = value => ({
+  type: 'list',
+  name: 'type',
+  message: 'WordPress type:',
+  choices: ['single-site', 'multisite'],
+  default: value,
+  validate: _.negate(_.isEmpty)
+});
+
 export const promptWPVersion = value => ({
   type: 'input',
   name: 'version',
-  message: 'WordPress Version:',
+  message: 'WordPress version:',
   default: value,
   validate: (value) =>
     value === 'latest' || value === 'nightly' || _.isSemver(value)
@@ -16,7 +25,7 @@ export const promptWPVersion = value => ({
 export const promptWPTitle = value => ({
   type: 'input',
   name: 'title',
-  message: 'WordPress Title:',
+  message: 'WordPress title:',
   default: value,
   validate: _.negate(_.isEmpty)
 });
@@ -24,7 +33,7 @@ export const promptWPTitle = value => ({
 export const promptWPAdminUser = value => ({
   type: 'input',
   name: 'adminUser',
-  message: 'WordPress Admin User:',
+  message: 'WordPress admin user:',
   default: value,
   filter: str => str.replace(' ', '-'),
   validate: _.negate(_.isEmpty)
@@ -33,7 +42,7 @@ export const promptWPAdminUser = value => ({
 export const promptWPAdminPassword = value => ({
   type: 'password',
   name: 'adminPassword',
-  message: 'WordPress Admin Password:',
+  message: 'WordPress admin password:',
   filter: String,
   default: value
 });
@@ -41,7 +50,7 @@ export const promptWPAdminPassword = value => ({
 export const promptWPAdminEmail = value => ({
   type: 'input',
   name: 'adminEmail',
-  message: 'WordPress Admin Email:',
+  message: 'WordPress admin email:',
   default: value,
   validate: _.isEmail
 });

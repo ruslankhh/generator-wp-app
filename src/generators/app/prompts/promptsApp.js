@@ -6,7 +6,7 @@ const _ = { ...lodashCheckit, ...lodash };
 export const promptAppName = value => ({
   type: 'input',
   name: 'name',
-  message: 'App Name:',
+  message: 'App name:',
   default: value,
   filter: str => str.replace(' ', '-').toLowerCase(),
   validate: _.negate(_.isEmpty)
@@ -15,7 +15,7 @@ export const promptAppName = value => ({
 export const promptAppAuthorName = value => ({
   type: 'input',
   name: 'authorName',
-  message: 'App Author Name:',
+  message: 'App author name:',
   default: value,
   validate: _.negate(_.isEmpty)
 });
@@ -23,7 +23,7 @@ export const promptAppAuthorName = value => ({
 export const promptAppAuthorEmail = value => ({
   type: 'input',
   name: 'authorEmail',
-  message: 'App Author Email:',
+  message: 'App author email:',
   default: value,
   validate: _.isEmail
 });

@@ -1,3 +1,5 @@
+import fs from 'fs';
+import fse from 'fs-extra';
 import Generator from 'yeoman-generator';
 import chalk from 'chalk';
 import yosay from 'yosay';
@@ -8,6 +10,7 @@ import {
   promptAppAuthorEmail
 } from './prompts/promptsApp';
 import {
+  promptWPType,
   promptWPVersion,
   promptWPTitle,
   promptWPAdminUser,
@@ -49,6 +52,7 @@ export default class extends Generator {
         this.log('');
 
         return this.prompt([
+          promptWPType(this.default.wp.type),
           promptWPVersion(this.default.wp.version),
           promptWPTitle(this.default.wp.title),
           promptWPAdminUser(this.default.wp.adminUser),
@@ -75,14 +79,14 @@ export default class extends Generator {
 
   writing() {
     this.log('');
-    this.fs.copyTpl(
-      this.templatePath('composer.json'),
-      this.destinationPath('composer.json'),
-      this.props
+    fse.copySync(
+      this.templatePath('app'),
+      this.destinationPath('app'),
+      { filter: (src) => !src.includes('.gitkeep') }
     );
     this.fs.copyTpl(
-      this.templatePath('wp-cli.local.yml'),
-      this.destinationPath('wp-cli.local.yml'),
+      this.templatePath('**/*'),
+      this.destinationPath(),
       this.props
     );
   }
@@ -104,17 +108,49 @@ export default class extends Generator {
       'create',
       `--dbname=${this.props.db.name}`,
       `--dbuser=${this.props.db.user}`,
-      `--dbpass=${this.props.db.password}`
+      `--dbpass=${this.props.db.password}`,
+      '--skip-check'
     ]);
     this.spawnCommandSync('./vendor/bin/wp', ['db', 'create']);
     this.spawnCommandSync('./vendor/bin/wp', [
       'core',
-      'install',
+      this.props.wp.type === 'multisite' ? 'multisite-install' : 'install',
       `--title=${this.props.wp.title}`,
       `--admin_user=${this.props.wp.adminUser}`,
       `--admin_password=${this.props.wp.adminPassword}`,
       `--admin_email=${this.props.wp.adminEmail}`
     ]);
+
+    fse.moveSync(
+      this.destinationPath('app/core/license.txt'),
+      this.destinationPath('app/LICENSE.txt')
+    );
+    fse.moveSync(
+      this.destinationPath('app/core/index.php'),
+      this.destinationPath('app/index.php')
+    );
+    fse.moveSync(
+      this.destinationPath('app/core/wp-config.php'),
+      this.destinationPath('app/wp-config.php')
+    );
+    fse.moveSync(
+      this.destinationPath('app/core/wp-content/plugins'),
+      this.destinationPath('app/plugins')
+    );
+    fse.moveSync(
+      this.destinationPath('app/core/wp-content/themes'),
+      this.destinationPath('app/themes')
+    );
+
+    fse.removeSync(this.destinationPath('app/core/readme.html'));
+    fse.removeSync(this.destinationPath('app/core/wp-config-sample.php'));
+    fse.removeSync(this.destinationPath('app/core/wp-content'));
+
+    fs.writeFileSync(
+      this.destinationPath('app/index.php'),
+      fs.readFileSync(this.destinationPath('app/index.php')).toString()
+        .replace('/wp-blog-header.php', '/core/wp-blog-header.php')
+    );
   }
 
   end() {

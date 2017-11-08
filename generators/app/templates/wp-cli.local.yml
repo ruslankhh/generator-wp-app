@@ -1,5 +1,20 @@
-path: app
+# Global parameter defaults
+path: app/core
 url: http://localhost:8000
 user: <%= wp.adminUser %>
 color: true
 debug: false
+
+# Subcommand defaults (e.g. `wp config create`)
+config create:
+  dbhost: localhost
+  extra-php: |
+    /**
+     * Set custom paths
+     *
+     * These are required because wordpress is installed in a subdirectory.
+     */
+    define( 'WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . ':8000/core' );
+    define( 'WP_HOME', 'http://' . $_SERVER['SERVER_NAME'] . ':8000' );
+    define( 'WP_CONTENT_DIR', dirname(__FILE__) );
+    define( 'WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . ':8000' );

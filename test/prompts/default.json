@@ -1,0 +1,24 @@
+{
+  "app": {
+    "name": "wordpress-app",
+    "authorName": "Vasya Pupkin",
+    "authorEmail": "vasya@example.com",
+    "requireWPCLI": true,
+    "packageManager": "yarn",
+    "run": false
+  },
+  "wp": {
+    "type": "single-site",
+    "version": "latest",
+    "title": "My Site",
+    "adminUser": "admin",
+    "adminPassword": "password",
+    "adminEmail": "admin@example.com",
+    "changeFileStructure": false
+  },
+  "db": {
+    "name": "wordpress-app",
+    "user": "root",
+    "password": ""
+  }
+}

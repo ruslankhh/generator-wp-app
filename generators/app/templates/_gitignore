@@ -1,0 +1,45 @@
+# Dependency directories
+bower_components/
+node_modules/
+
+# Automatically generated files
+*.log
+.sass-cache
+
+# WordPress files
+<% if (wp.changeFileStructure) { %>
+app/core/
+app/wp-config.php
+app/advanced-cache.php
+app/backup-db/
+app/backups/
+app/blogs.dir/
+app/cache/
+app/upgrade/
+app/uploads/
+app/wp-cache-config.php
+app/plugins/hello.php
+<% } else { %>
+app/wp-config.php
+app/wp-content/advanced-cache.php
+app/wp-content/backup-db/
+app/wp-content/backups/
+app/wp-content/blogs.dir/
+app/wp-content/cache/
+app/wp-content/upgrade/
+app/wp-content/uploads/
+app/wp-content/wp-cache-config.php
+app/wp-content/plugins/hello.php
+<% } %>
+app/.htaccess
+app/license.txt
+app/sitemap.xml
+app/sitemap.xml.gz
+
+# Operating system files
+.Spotlight-V100
+.Trashes
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db

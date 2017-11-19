@@ -27,3 +27,28 @@ export const promptAppAuthorEmail = value => ({
   default: value,
   validate: _.isEmail
 });
+
+export const promptAppRequireWPCLI = value => ({
+  type: 'confirm',
+  name: 'requireWPCLI',
+  message: 'App. Require WP-CLI?',
+  default: value,
+  validate: _.negate(_.isEmpty)
+});
+
+export const promptAppPackageManager = value => ({
+  type: 'list',
+  name: 'packageManager',
+  message: 'App Package Manager:',
+  choices: ['yarn', 'npm'],
+  default: value,
+  validate: _.negate(_.isEmpty)
+});
+
+export const promptAppRun = value => ({
+  type: 'confirm',
+  name: 'run',
+  message: 'App. Run the App immediately after installation?',
+  default: value,
+  validate: _.negate(_.isEmpty)
+});

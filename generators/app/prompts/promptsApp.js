@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.promptAppAuthorEmail = exports.promptAppAuthorName = exports.promptAppName = undefined;
+exports.promptAppRun = exports.promptAppPackageManager = exports.promptAppRequireWPCLI = exports.promptAppAuthorEmail = exports.promptAppAuthorName = exports.promptAppName = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -49,5 +49,36 @@ var promptAppAuthorEmail = exports.promptAppAuthorEmail = function promptAppAuth
     message: 'App author email:',
     default: value,
     validate: _.isEmail
+  };
+};
+
+var promptAppRequireWPCLI = exports.promptAppRequireWPCLI = function promptAppRequireWPCLI(value) {
+  return {
+    type: 'confirm',
+    name: 'requireWPCLI',
+    message: 'App. Require WP-CLI?',
+    default: value,
+    validate: _.negate(_.isEmpty)
+  };
+};
+
+var promptAppPackageManager = exports.promptAppPackageManager = function promptAppPackageManager(value) {
+  return {
+    type: 'list',
+    name: 'packageManager',
+    message: 'App Package Manager:',
+    choices: ['yarn', 'npm'],
+    default: value,
+    validate: _.negate(_.isEmpty)
+  };
+};
+
+var promptAppRun = exports.promptAppRun = function promptAppRun(value) {
+  return {
+    type: 'confirm',
+    name: 'run',
+    message: 'App. Run the App immediately after installation?',
+    default: value,
+    validate: _.negate(_.isEmpty)
   };
 };

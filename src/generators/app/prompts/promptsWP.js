@@ -54,3 +54,11 @@ export const promptWPAdminEmail = value => ({
   default: value,
   validate: _.isEmail
 });
+
+export const promptWPChangeFileStructure = value => ({
+  type: 'confirm',
+  name: 'changeFileStructure',
+  message: 'WordPress. Change the file structure?',
+  default: value,
+  validate: _.negate(_.isEmpty)
+});

@@ -27,11 +27,11 @@ import {
   promptDBPassword
 } from './prompts/promptsDB';
 
-import _default from './default.json';
+import prompts from './prompts/default.json';
 
 export default class extends Generator {
   initializing() {
-    this.default = _default;
+    this.default = prompts;
     this.props = {};
   }
 

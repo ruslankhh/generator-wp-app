@@ -1,7 +1,7 @@
 import path from 'path';
 import assert from 'yeoman-assert';
 import helpers from 'yeoman-test';
-import prompts from '../src/generators/app/default.json';
+import prompts from './prompts/default.json';
 
 describe('generator-wp-app:app', () => {
   beforeAll(() => {

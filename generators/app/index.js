@@ -32,15 +32,15 @@ var _promptsWP = require('./prompts/promptsWP');
 
 var _promptsDB = require('./prompts/promptsDB');
 
-var _default2 = require('./default.json');
+var _default = require('./prompts/default.json');
 
-var _default3 = _interopRequireDefault(_default2);
+var _default2 = _interopRequireDefault(_default);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = class extends _yeomanGenerator2.default {
   initializing() {
-    this.default = _default3.default;
+    this.default = _default2.default;
     this.props = {};
   }
 

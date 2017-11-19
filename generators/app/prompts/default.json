@@ -5,7 +5,7 @@
     "authorEmail": "vasya@example.com",
     "requireWPCLI": false,
     "packageManager": "yarn",
-    "run": false
+    "run": true
   },
   "wp": {
     "type": "single-site",

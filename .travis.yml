@@ -4,4 +4,8 @@ node_js:
   - 6
 services:
   - mysql
-after_script: 'cat ./coverage/lcov.info | coveralls'
+before_install:
+  - brew update
+  - brew install wp-cli
+after_script:
+  - cat ./coverage/lcov.info | coveralls

@@ -6,7 +6,6 @@ os: osx
 services:
   - mysql
 before_install:
-  - brew update
-  - brew install wp-cli
+  - brew install homebrew/php/wp-cli
 after_script:
   - cat ./coverage/lcov.info | coveralls

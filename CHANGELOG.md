@@ -1,3 +1,24 @@
+## 0.4.0 (November 19, 2017)
+
+#### 🚀 New Feature
+
+- `app`
+  - Add MySQL server starting. ([@ruslankhh](https://github.com/ruslankhh))
+  - Add prompt for changing WordPress file structure. ([@ruslankhh](https://github.com/ruslankhh))
+  - Add creating `.htaccess` with WP-CLI. ([@ruslankhh](https://github.com/ruslankhh))
+  - Add Gulp task runner with Browser-sync, Babel and PHP server. ([@ruslankhh](https://github.com/ruslankhh))
+  - Add running App. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### 🏠 Internal
+
+- `app`
+  - Add config files (`.babelrc`, `.editorconfig`, `.gitattributes`, `.gitignore`, `packages.json`). ([@ruslankhh](https://github.com/ruslankhh))
+  - Update test cases. ([@ruslankhh](https://github.com/ruslankhh))
+
+#### Committers: 1
+
+- Ruslan Khusnetdinov ([ruslankhh](https://github.com/ruslankhh))
+
 ## 0.3.0 (November 8, 2017)
 
 #### 🚀 New Feature

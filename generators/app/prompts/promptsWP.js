@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.promptWPAdminEmail = exports.promptWPAdminPassword = exports.promptWPAdminUser = exports.promptWPTitle = exports.promptWPVersion = exports.promptWPType = undefined;
+exports.promptWPChangeFileStructure = exports.promptWPAdminEmail = exports.promptWPAdminPassword = exports.promptWPAdminUser = exports.promptWPTitle = exports.promptWPVersion = exports.promptWPType = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -86,5 +86,15 @@ var promptWPAdminEmail = exports.promptWPAdminEmail = function promptWPAdminEmai
     message: 'WordPress admin email:',
     default: value,
     validate: _.isEmail
+  };
+};
+
+var promptWPChangeFileStructure = exports.promptWPChangeFileStructure = function promptWPChangeFileStructure(value) {
+  return {
+    type: 'confirm',
+    name: 'changeFileStructure',
+    message: 'WordPress. Change the file structure?',
+    default: value,
+    validate: _.negate(_.isEmpty)
   };
 };
